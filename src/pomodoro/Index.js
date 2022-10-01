@@ -1,10 +1,13 @@
 import React from 'react'
 import {App} from './App';
-
+import "./Index.css"
 
 function Index () {
   return (
-    <App />
+    <App 
+      defaultBreakLength='5' 
+      defaultSessionLength='25'
+    />
   )
 }
 

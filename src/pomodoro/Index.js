@@ -8,4 +8,4 @@ function Index () {
   )
 }
 
-export {Index as Pomorodo};
+export {Index as Pomodoro};

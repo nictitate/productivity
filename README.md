@@ -2,7 +2,7 @@
 
 Following applications are exist now.
 
-1. Pomorodo
+1. Pomodoro
 
 
 

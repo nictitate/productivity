@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import './App.css';
-import {Pomorodo} from "./pomorodo/Index"
+import {Pomodoro} from "./pomodoro/Index"
 import { Disclosure} from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 
@@ -75,7 +75,7 @@ export default function App() {
       )}
     </Disclosure>
     <Routes>
-          <Route exact path="/" element={<Pomorodo/>}/>
+          <Route exact path="/" element={<Pomodoro/>}/>
       </Routes>
     </Router>
   )

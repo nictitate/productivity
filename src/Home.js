@@ -1,6 +1,3 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import './App.css';
-import {Pomorodo} from "./pomorodo/Index"
 import { Disclosure} from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 
@@ -12,9 +9,8 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function App() {
+export default function Home() {
   return (
-    <Router>
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
         <>
@@ -74,9 +70,5 @@ export default function App() {
         </>
       )}
     </Disclosure>
-    <Routes>
-          <Route exact path="/" element={<Pomorodo/>}/>
-      </Routes>
-    </Router>
   )
 }

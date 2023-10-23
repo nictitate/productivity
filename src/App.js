@@ -3,9 +3,11 @@ import './App.css';
 import {Pomodoro} from "./pomodoro/Index"
 import { Disclosure} from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import Calculator from './calculator/Calculator';
 
 const navigation = [
   { name: 'Pomodoro', href: '/productivity', current: true },
+  { name: 'Calculator', href: '/calculator', current: false },
 ]
 
 function classNames(...classes) {
@@ -76,6 +78,7 @@ export default function App() {
     </Disclosure>
     <Routes>
           <Route exact path="/" element={<Pomodoro/>}/>
+          <Route exact path="/calculator" element={<Calculator/>}/>
       </Routes>
     </Router>
   )

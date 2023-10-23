@@ -5,7 +5,7 @@ import { Disclosure} from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 
 const navigation = [
-  { name: 'Pomodoro', href: '/', current: true },
+  { name: 'Pomodoro', href: '/productivity', current: true },
 ]
 
 function classNames(...classes) {

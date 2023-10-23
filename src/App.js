@@ -4,10 +4,12 @@ import {Pomodoro} from "./pomodoro/Index"
 import { Disclosure} from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Calculator from './calculator/Calculator';
+import AgeCalculator from './age/Age';
 
 const navigation = [
   { name: 'Pomodoro', href: '/productivity', current: true },
   { name: 'Calculator', href: '/calculator', current: false },
+  { name: 'Age Calculator', href: '/age', current: false },
 ]
 
 function classNames(...classes) {
@@ -79,6 +81,7 @@ export default function App() {
     <Routes>
           <Route exact path="/" element={<Pomodoro/>}/>
           <Route exact path="/calculator" element={<Calculator/>}/>
+          <Route exact path="/age" element={<AgeCalculator/>}/>
       </Routes>
     </Router>
   )

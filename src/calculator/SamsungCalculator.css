@@ -1,0 +1,50 @@
+ .basic-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 0.7rem;
+  margin-bottom: 1rem;
+}
+ .btn {
+  font-size: 1.35rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  background: #f3f4f6;
+  color: #222;
+  padding: 1.1rem 0;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+ .btn:active, .btn:hover {
+  background: #e0e7ff;
+  color: #3730a3;
+}
+ .operator {
+  background: #6366f1;
+  color: #fff;
+}
+ .operator:active, .operator:hover {
+  background: #4f46e5;
+  color: #fff;
+}
+ .equals {
+  background: #059669;
+  color: #fff;
+}
+ .equals:active, .equals:hover {
+  background: #047857;
+  color: #fff;
+}
+ .clear {
+  background: #f87171;
+  color: #fff;
+}
+ .clear:active, .clear:hover {
+  background: #dc2626;
+  color: #fff;
+}
+ .zero {
+  grid-column: span 1;
+}

@@ -36,6 +36,9 @@ function TodoApp() {
     setTodos(todos.filter(todo => todo.id !== id));
   };
 
+  const yetToComplete = todos.filter(todo => !todo.completed);
+  const completed = todos.filter(todo => todo.completed);
+
   return (
     <div style={{ maxWidth: 400, margin: '2rem auto', padding: '1rem', background: '#f9f9f9', borderRadius: 8 }}>
       <h2>Todo App</h2>
@@ -49,25 +52,54 @@ function TodoApp() {
         />
         <button type="submit">Add</button>
       </form>
-      <ul style={{ listStyle: 'none', padding: 0, marginTop: '1rem' }}>
-        {todos.length === 0 && <li>No todos yet!</li>}
-        {todos.map(todo => (
-          <li key={todo.id} style={{ display: 'flex', alignItems: 'center', marginBottom: '0.5rem' }}>
-            <span
-              onClick={() => toggleTodo(todo.id)}
-              style={{
-                textDecoration: todo.completed ? 'line-through' : 'none',
-                flex: 1,
-                cursor: 'pointer',
-                color: todo.completed ? '#888' : '#222'
-              }}
-            >
-              {todo.text}
-            </span>
-            <button onClick={() => deleteTodo(todo.id)} style={{ marginLeft: '0.5rem' }}>Delete</button>
-          </li>
-        ))}
-      </ul>
+
+      <div style={{ marginTop: '1.5rem' }}>
+        <h3 style={{ marginBottom: '0.5rem' }}>Yet to Complete</h3>
+        <ul style={{ listStyle: 'none', padding: 0 }}>
+          {yetToComplete.length === 0 && <li>No todos yet!</li>}
+          {yetToComplete.map(todo => (
+            <li key={todo.id} style={{ display: 'flex', alignItems: 'center', marginBottom: '0.5rem' }}>
+              <input
+                type="checkbox"
+                checked={todo.completed}
+                onChange={() => toggleTodo(todo.id)}
+                style={{ marginRight: '0.5rem' }}
+              />
+              <span
+                style={{ flex: 1, cursor: 'pointer', color: '#222' }}
+                onClick={() => toggleTodo(todo.id)}
+              >
+                {todo.text}
+              </span>
+              <button onClick={() => deleteTodo(todo.id)} style={{ marginLeft: '0.5rem' }}>Delete</button>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div style={{ marginTop: '1.5rem' }}>
+        <h3 style={{ marginBottom: '0.5rem' }}>Completed</h3>
+        <ul style={{ listStyle: 'none', padding: 0 }}>
+          {completed.length === 0 && <li>No completed todos!</li>}
+          {completed.map(todo => (
+            <li key={todo.id} style={{ display: 'flex', alignItems: 'center', marginBottom: '0.5rem' }}>
+              <input
+                type="checkbox"
+                checked={todo.completed}
+                onChange={() => toggleTodo(todo.id)}
+                style={{ marginRight: '0.5rem' }}
+              />
+              <span
+                style={{ flex: 1, textDecoration: 'line-through', color: '#888', cursor: 'pointer' }}
+                onClick={() => toggleTodo(todo.id)}
+              >
+                {todo.text}
+              </span>
+              <button onClick={() => deleteTodo(todo.id)} style={{ marginLeft: '0.5rem' }}>Delete</button>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }

@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-const LOCAL_STORAGE_KEY = 'pomodoroApp.state';
 import './Pomodoro.css';
 import { ClockIcon } from '@heroicons/react/24/outline';
+
+const LOCAL_STORAGE_KEY = 'pomodoroApp.state';
 
 const Controller = (props) => {
   return (

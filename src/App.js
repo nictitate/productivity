@@ -8,7 +8,7 @@ import Calculator from './calculator/Calculator';
 import AgeCalculator from './age/Age';
 
 const navigation = [
-  { name: 'Pomodoro', href: '/', current: true },
+  { name: 'Pomodoro', href: '/pomodoro', current: false },
   { name: 'Calculator', href: '/calculator', current: false },
   { name: 'Age Calculator', href: '/age', current: false },
 ]
@@ -38,16 +38,8 @@ function AppWithRouter() {
           <>
             <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
               <div className="relative flex h-16 items-center justify-between">
-                <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-                  {/* Mobile menu button*/}
-                  <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
-                    <span className="sr-only">Open main menu</span>
-                    {open ? (
-                      <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
-                    ) : (
-                      <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
-                    )}
-                  </Disclosure.Button>
+                <div className="flex items-center">
+                  <span className="text-white text-2xl font-bold mr-8">Productivity</span>
                 </div>
                 <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                   <div className="hidden sm:ml-6 sm:block">
@@ -92,11 +84,12 @@ function AppWithRouter() {
           </>
         )}
       </Disclosure>
-      <Routes>
-            <Route exact path="/" element={<Pomodoro/>}/>
-            <Route exact path="/calculator" element={<Calculator/>}/>
-            <Route exact path="/age" element={<AgeCalculator/>}/>
-        </Routes>
+  <Routes>
+    <Route exact path="/" element={<Pomodoro/>}/>
+    <Route exact path="/pomodoro" element={<Pomodoro/>}/>
+    <Route exact path="/calculator" element={<Calculator/>}/>
+    <Route exact path="/age" element={<AgeCalculator/>}/>
+    </Routes>
     </>
   )
 }

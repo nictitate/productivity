@@ -1,13 +1,24 @@
 import React, { Component } from "react";
+import './Pomodoro.css';
 
 const Controller = (props) => {
   return (
-    <div className="controller">
-        <button id="start_stop" onClick={props.onStartStop}>
-          {props.isStart ? 'Stop' : 'Start'}
-        </button>
-        <button id="reset" onClick={props.onReset}>Reset</button>
-      </div>
+    <div className="pomodoro-controller">
+      <button
+        id="start_stop"
+        onClick={props.onStartStop}
+        className="pomodoro-btn"
+      >
+        {props.isStart ? 'Stop' : 'Start'}
+      </button>
+      <button
+        id="reset"
+        onClick={props.onReset}
+        className="pomodoro-btn pomodoro-btn-reset"
+      >
+        Reset
+      </button>
+    </div>
   )
 }
 
@@ -37,7 +48,6 @@ class App extends Component {
     super(props);
 
     this.audioBeep = React.createRef();
-
     this.state = {
       breakLength: Number.parseInt(this.props.defaultBreakLength, 10),
       sessionLength: Number.parseInt(this.props.defaultSessionLength, 10),
@@ -45,7 +55,7 @@ class App extends Component {
       timeLeftInSecond: Number.parseInt(this.props.defaultSessionLength, 10) * 60,
       isStart: false,
       timerInterval: null
-    }
+    };
 
     this.onReset = this.onReset.bind(this);
     this.onStartStop = this.onStartStop.bind(this);
@@ -115,19 +125,30 @@ class App extends Component {
 
   render() {
     return (
-      <div className="pomodoro-clock">
-
-        <Times
-          timeLabel={this.state.timeLabel}
-          timeLeftInSecond={this.state.timeLeftInSecond}
-        />
-
-        <Controller
-          onReset={this.onReset}
-          onStartStop={this.onStartStop}
-          isStart={this.state.isStart}
-        />
-
+      <div style={{
+        maxWidth: 400,
+        margin: '2rem auto',
+        padding: '2rem',
+        background: 'linear-gradient(135deg, #e0e7ff 0%, #f9fafb 100%)',
+        borderRadius: 16,
+        boxShadow: '0 4px 24px rgba(0,0,0,0.08)',
+        fontFamily: 'Inter, Arial, sans-serif',
+        textAlign: 'center'
+      }}>
+        <h2 style={{ fontWeight: 700, fontSize: '2rem', color: '#3730a3', marginBottom: '1.5rem' }}>⏳ Pomodoro Timer</h2>
+        <div style={{ marginBottom: '2rem' }}>
+          <Times
+            timeLabel={this.state.timeLabel}
+            timeLeftInSecond={this.state.timeLeftInSecond}
+          />
+        </div>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginBottom: '1rem' }}>
+          <Controller
+            onReset={this.onReset}
+            onStartStop={this.onStartStop}
+            isStart={this.state.isStart}
+          />
+        </div>
         <audio id="beep" preload="auto" src="https://goo.gl/65cBl1" ref={this.audioBeep}></audio>
       </div>
     );

@@ -6,12 +6,14 @@ import { Disclosure} from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Calculator from './calculator/Calculator';
 import AgeCalculator from './age/Age';
+import UnitConverter from './unitconvertor/UnitConverter';
 import TodoApp from './todo/TodoApp';
 
 const navigation = [
   { name: 'Pomodoro', href: '/pomodoro', current: false },
   { name: 'Calculator', href: '/calculator', current: false },
   { name: 'Age Calculator', href: '/age', current: false },
+  { name: 'Unit Converter', href: '/unitconverter', current: false },
   { name: 'Todo', href: '/todo', current: false },
 ]
 
@@ -91,6 +93,7 @@ function AppWithRouter() {
     <Route exact path="/pomodoro" element={<Pomodoro/>}/>
     <Route exact path="/calculator" element={<Calculator/>}/>
     <Route exact path="/age" element={<AgeCalculator/>}/>
+        <Route exact path="/unitconverter" element={<UnitConverter/>}/>
     <Route exact path="/todo" element={<TodoApp/>}/>
   </Routes>
     </>

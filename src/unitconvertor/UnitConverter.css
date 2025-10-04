@@ -1,0 +1,58 @@
+.unit-converter-container {
+  max-width: 400px;
+  margin: 2rem auto;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 2rem 1.5rem;
+}
+.unit-converter-title {
+  text-align: center;
+  font-size: 1.7rem;
+  font-weight: 600;
+  margin-bottom: 1.2rem;
+}
+.unit-converter-card {
+  background: #f3f4f6;
+  border-radius: 12px;
+  padding: 1.2rem;
+}
+.unit-converter-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.unit-converter-row label {
+  flex: 0 0 70px;
+  font-weight: 500;
+}
+.unit-converter-select, .unit-converter-input {
+  flex: 1;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  font-size: 1rem;
+  margin-left: 0.5rem;
+}
+.unit-converter-btn {
+  width: 100%;
+  padding: 0.7rem;
+  background: #6366f1;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background 0.2s;
+}
+.unit-converter-btn:hover {
+  background: #4f46e5;
+}
+.unit-converter-output {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  color: #059669;
+}

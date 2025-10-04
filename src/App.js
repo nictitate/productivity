@@ -9,6 +9,7 @@ import UnitConverter from './unitconvertor/UnitConverter';
 import TodoApp from './todo/TodoApp';
 import ICSViewer from './icsviewer/ICSViewer';
 import EncoderDecoder from './encoderdecoder/EncoderDecoder';
+import ImageToBase64 from './img2base64/ImageToBase64';
 
 const BASENAME = '/productivity';
 const navigation = [
@@ -19,6 +20,7 @@ const navigation = [
   { name: 'Todo', path: '/todo' },
   { name: 'ICS Viewer', path: '/icsviewer' },
   { name: 'Encoder/Decoder', path: '/encoderdecoder' },
+  { name: 'Image to Base64', path: '/img2base64' },
 ];
 
 function classNames(...classes) {
@@ -105,6 +107,7 @@ function AppWithRouter() {
         <Route exact path="/todo" element={<TodoApp/>}/>
         <Route exact path="/icsviewer" element={<ICSViewer/>}/>
         <Route exact path="/encoderdecoder" element={<EncoderDecoder/>}/>
+        <Route exact path="/img2base64" element={<ImageToBase64/>}/>
       </Routes>
     </>
   );

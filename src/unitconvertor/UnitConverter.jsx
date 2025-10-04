@@ -114,8 +114,8 @@ const UnitConverter = () => {
 
   return (
     <div className="unit-converter-container">
-      <h2 className="unit-converter-title" style={{ display: 'flex', alignItems: 'center', gap: '0.5em' }}>
-        <ArrowsRightLeftIcon className="unit-converter-title-icon" style={{ width: 28, height: 28 }} />
+      <h2 className="app-title">
+        <ArrowsRightLeftIcon className="app-title-icon" />
         Unit Converter
       </h2>
       <div className="unit-converter-card">
@@ -147,7 +147,7 @@ const UnitConverter = () => {
           <label>Value:</label>
           <input type="number" value={input} onChange={e => setInput(e.target.value)} className="unit-converter-input" />
         </div>
-        <button onClick={handleConvert} className="unit-converter-btn">Convert</button>
+  <button onClick={handleConvert} className="app-btn app-btn-primary">Convert</button>
         <div className="unit-converter-output">
           {output !== '' && <span>Result: {output}</span>}
         </div>

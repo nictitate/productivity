@@ -46,11 +46,11 @@ export default function ICSViewer() {
 
   return (
     <div className="ics-viewer enhanced">
-      <h2 className="ics-title">
-        <CalendarDaysIcon className="ics-title-icon" /> ICS File Viewer
+      <h2 className="app-title">
+        <CalendarDaysIcon className="app-title-icon" /> ICS File Viewer
       </h2>
       <label className="ics-file-label">
-        <span className="ics-file-btn">Choose .ics File</span>
+  <span className="app-btn app-btn-secondary">Choose .ics File</span>
         <input type="file" accept=".ics" onChange={handleFile} className="ics-file-input" />
       </label>
       {error && <div className="ics-error">{error}</div>}

@@ -53,8 +53,8 @@ export default function EncoderDecoder() {
 
   return (
     <div className="encoder-decoder ed-card">
-      <h2 className="ed-title" style={{ display: 'flex', alignItems: 'center', gap: '0.5em' }}>
-        <CodeBracketIcon className="ed-title-icon" style={{ width: 28, height: 28 }} />
+      <h2 className="app-title">
+        <CodeBracketIcon className="app-title-icon" />
         Encoder / Decoder
       </h2>
       <div className="ed-controls">
@@ -77,7 +77,7 @@ export default function EncoderDecoder() {
           onChange={handleInput}
         />
       </div>
-      <button className="ed-btn" onClick={handleConvert}>Convert</button>
+  <button className="app-btn app-btn-primary" onClick={handleConvert}>Convert</button>
       <div className="ed-section">
         <label className="ed-label" htmlFor="ed-output">Output</label>
         <textarea

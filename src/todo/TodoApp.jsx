@@ -41,8 +41,8 @@ function TodoApp() {
 
   return (
     <div className="todo-container">
-    <h2 className="todo-title" style={{ display: 'flex', alignItems: 'center', gap: '0.5em' }}>
-      <CheckCircleIcon className="todo-title-icon" style={{ width: 28, height: 28 }} />
+    <h2 className="app-title">
+      <CheckCircleIcon className="app-title-icon" />
       Todo App
     </h2>
       <form onSubmit={addTodo} className="todo-form">
@@ -55,7 +55,7 @@ function TodoApp() {
         />
         <button
           type="submit"
-          className="todo-btn"
+          className="app-btn app-btn-primary"
         >Add</button>
       </form>
 
@@ -77,10 +77,10 @@ function TodoApp() {
               >
                 {todo.text}
               </span>
-              <button
-                onClick={() => deleteTodo(todo.id)}
-                className="todo-delete-btn"
-              >Delete</button>
+             <button
+               onClick={() => deleteTodo(todo.id)}
+               className="app-btn app-btn-secondary"
+             >Delete</button>
             </li>
           ))}
         </ul>

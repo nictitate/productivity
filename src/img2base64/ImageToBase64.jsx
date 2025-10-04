@@ -34,12 +34,12 @@ export default function ImageToBase64() {
 
   return (
     <div className="img2b64-card">
-      <h2 className="img2b64-title" style={{ display: 'flex', alignItems: 'center', gap: '0.5em' }}>
-        <PhotoIcon className="img2b64-title-icon" style={{ width: 28, height: 28 }} />
-        Image to Base64 Converter
+      <h2 className="app-title">
+        <PhotoIcon className="app-title-icon" />
+        Img to Base64 Converter
       </h2>
       <label className="img2b64-label">
-        <span className="img2b64-btn">Choose Image</span>
+        <span className="app-btn app-btn-secondary">Choose Image</span>
         <input type="file" accept="image/*" onChange={handleFile} className="img2b64-input" />
       </label>
       {error && <div className="img2b64-error">{error}</div>}
@@ -58,7 +58,7 @@ export default function ImageToBase64() {
           readOnly
           placeholder="Base64 string will appear here..."
         />
-        <button className="img2b64-copy" onClick={handleCopy} disabled={!base64}>Copy</button>
+        <button className="app-btn app-btn-primary" onClick={handleCopy} disabled={!base64}>Copy</button>
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route, Routes, Link, useLocation } from 'react-router-dom'
 import './App.css';
+import './styles/app-unified.css';
 import {Pomodoro} from "./pomodoro/Index"
 import { Disclosure} from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'

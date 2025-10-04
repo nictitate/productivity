@@ -15,8 +15,8 @@ function AgeCalculator() {
 
     return (
         <div className="age-container">
-            <h2 className="age-title" style={{ display: 'flex', alignItems: 'center', gap: '0.5em' }}>
-                <UserCircleIcon className="age-title-icon" style={{ width: 28, height: 28 }} />
+            <h2 className="app-title">
+                <UserCircleIcon className="app-title-icon" />
                 Age Calculator
             </h2>
             <input 
@@ -27,7 +27,7 @@ function AgeCalculator() {
             />
             <button 
                 onClick={calculateAge} 
-                className="age-btn"
+                className="app-btn app-btn-primary"
             >
                 Calculate Age
             </button>

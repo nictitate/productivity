@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+const LOCAL_STORAGE_KEY = 'pomodoroApp.state';
 import './Pomodoro.css';
 import { ClockIcon } from '@heroicons/react/24/outline';
 
@@ -49,7 +50,12 @@ class App extends Component {
     super(props);
 
     this.audioBeep = React.createRef();
-    this.state = {
+    // Try to restore state from localStorage
+    let savedState = null;
+    try {
+      savedState = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+    } catch (e) {}
+    this.state = savedState || {
       breakLength: Number.parseInt(this.props.defaultBreakLength, 10),
       sessionLength: Number.parseInt(this.props.defaultSessionLength, 10),
       timeLabel: 'Session',
@@ -64,6 +70,26 @@ class App extends Component {
     this.phaseControl = this.phaseControl.bind(this);
   }
 
+  componentDidMount() {
+    // If timer was running, adjust timeLeftInSecond based on elapsed time
+    const saved = localStorage.getItem(LOCAL_STORAGE_KEY);
+    if (saved) {
+      const state = JSON.parse(saved);
+      if (state.isStart && state.lastTimestamp) {
+        const now = Date.now();
+        const elapsed = Math.floor((now - state.lastTimestamp) / 1000);
+        let newTime = state.timeLeftInSecond - elapsed;
+        if (newTime < 0) newTime = 0;
+        this.setState({
+          ...state,
+          timeLeftInSecond: newTime,
+          isStart: false, // Always pause on reload
+          timerInterval: null
+        });
+      }
+    }
+  }
+
   onReset() {
     this.setState({
       breakLength: Number.parseInt(this.props.defaultBreakLength, 10),
@@ -72,7 +98,7 @@ class App extends Component {
       timeLeftInSecond: Number.parseInt(this.props.defaultSessionLength, 10) * 60,
       isStart: false,
       timerInterval: null
-    });
+    }, this.saveState);
 
     this.audioBeep.current.pause();
     this.audioBeep.current.currentTime = 0;
@@ -81,29 +107,32 @@ class App extends Component {
 
   onStartStop() {
     if (!this.state.isStart) {
+      const timerInterval = setInterval(() => {
+        this.decreaseTimer();
+        this.phaseControl();
+      }, 1000);
       this.setState({
-        isStart: !this.state.isStart,
-        timerInterval: setInterval(() => {
-          this.decreaseTimer();
-          this.phaseControl();
-        }, 1000)
-      })
+        isStart: true,
+        timerInterval,
+        lastTimestamp: Date.now()
+      }, this.saveState);
     } else {
       this.audioBeep.current.pause();
       this.audioBeep.current.currentTime = 0;
       this.state.timerInterval && clearInterval(this.state.timerInterval);
-
       this.setState({
-        isStart: !this.state.isStart,
-        timerInterval: null
-      });
+        isStart: false,
+        timerInterval: null,
+        lastTimestamp: null
+      }, this.saveState);
     }
   }
 
   decreaseTimer() {
-    this.setState({
-      timeLeftInSecond: this.state.timeLeftInSecond - 1
-    });
+    this.setState(prev => {
+      const newTime = prev.timeLeftInSecond - 1;
+      return { timeLeftInSecond: newTime, lastTimestamp: Date.now() };
+    }, this.saveState);
   }
 
   phaseControl() {
@@ -114,14 +143,22 @@ class App extends Component {
         this.setState({
           timeLabel: 'Break',
           timeLeftInSecond: this.state.breakLength * 60
-        });
+        }, this.saveState);
       } else {
         this.setState({
           timeLabel: 'Session',
           timeLeftInSecond: this.state.sessionLength * 60
-        });
+        }, this.saveState);
       }
     }
+  }
+  saveState = () => {
+    // Save all state except timerInterval and audio ref
+    const { timerInterval, ...toSave } = this.state;
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify({
+      ...toSave,
+      lastTimestamp: this.state.isStart ? Date.now() : null
+    }));
   }
 
   render() {

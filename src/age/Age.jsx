@@ -1,6 +1,8 @@
+
 import React, { useState } from 'react';
 import { differenceInYears } from 'date-fns';
 import './Age.css';
+import { UserCircleIcon } from '@heroicons/react/24/outline';
 
 function AgeCalculator() {
     const [birthDate, setBirthDate] = useState('');
@@ -13,7 +15,10 @@ function AgeCalculator() {
 
     return (
         <div className="age-container">
-            <h2 className="age-title">Age Calculator</h2>
+            <h2 className="age-title" style={{ display: 'flex', alignItems: 'center', gap: '0.5em' }}>
+                <UserCircleIcon className="age-title-icon" style={{ width: 28, height: 28 }} />
+                Age Calculator
+            </h2>
             <input 
                 type="date" 
                 value={birthDate} 

@@ -3,6 +3,7 @@ import './Calculator.css';
 import './Calculator-advanced.css';
 import './SamsungCalculator.css';
 import './Calculator.css';
+import { CalculatorIcon } from '@heroicons/react/24/outline';
 
 const scientificOps = [
   { label: '(', value: '(' },
@@ -132,7 +133,10 @@ const Calculator = () => {
 
   return (
     <div className="calculator-container">
-      <h2 className="calculator-title">Calculator</h2>
+      <h2 className="calculator-title" style={{ display: 'flex', alignItems: 'center', gap: '0.5em' }}>
+        <CalculatorIcon className="calculator-title-icon" style={{ width: 28, height: 28 }} />
+        Calculator
+      </h2>
       <input
         type="text"
         value={value}

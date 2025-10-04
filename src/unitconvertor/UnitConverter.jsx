@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './UnitConverter.css';
+import { ArrowsRightLeftIcon } from '@heroicons/react/24/outline';
 
 const units = {
   length: [
@@ -113,7 +114,10 @@ const UnitConverter = () => {
 
   return (
     <div className="unit-converter-container">
-      <h2 className="unit-converter-title">Unit Converter</h2>
+      <h2 className="unit-converter-title" style={{ display: 'flex', alignItems: 'center', gap: '0.5em' }}>
+        <ArrowsRightLeftIcon className="unit-converter-title-icon" style={{ width: 28, height: 28 }} />
+        Unit Converter
+      </h2>
       <div className="unit-converter-card">
         <div className="unit-converter-row">
           <label>Type:</label>

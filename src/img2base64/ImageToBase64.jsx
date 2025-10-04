@@ -1,5 +1,7 @@
+
 import React, { useState } from 'react';
 import './ImageToBase64.css';
+import { PhotoIcon } from '@heroicons/react/24/outline';
 
 export default function ImageToBase64() {
   const [image, setImage] = useState(null);
@@ -32,7 +34,10 @@ export default function ImageToBase64() {
 
   return (
     <div className="img2b64-card">
-      <h2 className="img2b64-title">Image to Base64 Converter</h2>
+      <h2 className="img2b64-title" style={{ display: 'flex', alignItems: 'center', gap: '0.5em' }}>
+        <PhotoIcon className="img2b64-title-icon" style={{ width: 28, height: 28 }} />
+        Image to Base64 Converter
+      </h2>
       <label className="img2b64-label">
         <span className="img2b64-btn">Choose Image</span>
         <input type="file" accept="image/*" onChange={handleFile} className="img2b64-input" />

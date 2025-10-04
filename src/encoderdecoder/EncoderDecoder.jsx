@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './EncoderDecoder.css';
+import { CodeBracketIcon } from '@heroicons/react/24/outline';
 
 function base64Encode(str) {
   try {
@@ -52,7 +53,10 @@ export default function EncoderDecoder() {
 
   return (
     <div className="encoder-decoder ed-card">
-      <h2 className="ed-title">Encoder / Decoder</h2>
+      <h2 className="ed-title" style={{ display: 'flex', alignItems: 'center', gap: '0.5em' }}>
+        <CodeBracketIcon className="ed-title-icon" style={{ width: 28, height: 28 }} />
+        Encoder / Decoder
+      </h2>
       <div className="ed-controls">
         <label className="ed-label" htmlFor="ed-mode">Mode:</label>
         <select id="ed-mode" value={mode} onChange={handleMode} className="ed-select">

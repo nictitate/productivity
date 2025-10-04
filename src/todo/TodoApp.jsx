@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './TodoApp.css';
+import { CheckCircleIcon } from '@heroicons/react/24/outline';
 
 const LOCAL_STORAGE_KEY = 'todoApp.todos';
 
@@ -40,7 +41,10 @@ function TodoApp() {
 
   return (
     <div className="todo-container">
-      <h2 className="todo-title">📝 ToDo</h2>
+    <h2 className="todo-title" style={{ display: 'flex', alignItems: 'center', gap: '0.5em' }}>
+      <CheckCircleIcon className="todo-title-icon" style={{ width: 28, height: 28 }} />
+      Todo App
+    </h2>
       <form onSubmit={addTodo} className="todo-form">
         <input
           type="text"

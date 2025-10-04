@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import './Pomodoro.css';
+import { ClockIcon } from '@heroicons/react/24/outline';
 
 const Controller = (props) => {
   return (
@@ -135,7 +136,10 @@ class App extends Component {
         fontFamily: 'Inter, Arial, sans-serif',
         textAlign: 'center'
       }}>
-        <h2 style={{ fontWeight: 700, fontSize: '2rem', color: '#3730a3', marginBottom: '1.5rem' }}>⏳ Pomodoro Timer</h2>
+        <h2 style={{ fontWeight: 700, fontSize: '2rem', color: '#3730a3', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5em' }}>
+          <ClockIcon style={{ width: 28, height: 28 }} />
+          Pomodoro Timer
+        </h2>
         <div style={{ marginBottom: '2rem' }}>
           <Times
             timeLabel={this.state.timeLabel}

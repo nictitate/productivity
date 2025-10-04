@@ -7,6 +7,7 @@ import Calculator from './calculator/Calculator';
 import AgeCalculator from './age/Age';
 import UnitConverter from './unitconvertor/UnitConverter';
 import TodoApp from './todo/TodoApp';
+import ICSViewer from './icsviewer/ICSViewer';
 
 const BASENAME = '/productivity';
 const navigation = [
@@ -15,6 +16,7 @@ const navigation = [
   { name: 'Age Calculator', path: '/age' },
   { name: 'Unit Converter', path: '/unitconverter' },
   { name: 'Todo', path: '/todo' },
+  { name: 'ICS Viewer', path: '/icsviewer' },
 ];
 
 function classNames(...classes) {
@@ -99,6 +101,7 @@ function AppWithRouter() {
         <Route exact path="/age" element={<AgeCalculator/>}/>
         <Route exact path="/unitconverter" element={<UnitConverter/>}/>
         <Route exact path="/todo" element={<TodoApp/>}/>
+        <Route exact path="/icsviewer" element={<ICSViewer/>}/>
       </Routes>
     </>
   );

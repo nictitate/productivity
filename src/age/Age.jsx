@@ -26,11 +26,11 @@ function AgeCalculator() {
                 >
                     Calculate Age
                 </button>
-                {age && (
+                {age ? (
                     <p className="mt-4">
                         You are <span className="font-bold">{age}</span> years old.
                     </p>
-                )}
+                ) : null}
             </div>
         </div>
     );

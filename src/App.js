@@ -1,5 +1,4 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import { useLocation } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes, Link, useLocation } from 'react-router-dom'
 import './App.css';
 import {Pomodoro} from "./pomodoro/Index"
 import { Disclosure} from '@headlessui/react'
@@ -9,21 +8,23 @@ import AgeCalculator from './age/Age';
 import UnitConverter from './unitconvertor/UnitConverter';
 import TodoApp from './todo/TodoApp';
 
+const BASENAME = '/productivity';
 const navigation = [
-  { name: 'Pomodoro', href: '/pomodoro', current: false },
-  { name: 'Calculator', href: '/calculator', current: false },
-  { name: 'Age Calculator', href: '/age', current: false },
-  { name: 'Unit Converter', href: '/unitconverter', current: false },
-  { name: 'Todo', href: '/todo', current: false },
-]
+  { name: 'Pomodoro', path: '/pomodoro' },
+  { name: 'Calculator', path: '/calculator' },
+  { name: 'Age Calculator', path: '/age' },
+  { name: 'Unit Converter', path: '/unitconverter' },
+  { name: 'Todo', path: '/todo' },
+];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
+
 export default function App() {
   return (
-    <Router>
+    <Router basename={BASENAME}>
       <AppWithRouter/>
     </Router>
   );
@@ -31,10 +32,6 @@ export default function App() {
 
 function AppWithRouter() {
   const location = useLocation();
-  const updatedNavigation = navigation.map(item => ({
-    ...item,
-    current: item.href === location.pathname
-  }));
   return (
     <>
       <Disclosure as="nav" className="bg-gray-800">
@@ -48,19 +45,23 @@ function AppWithRouter() {
                 <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                   <div className="hidden sm:ml-6 sm:block">
                     <div className="flex space-x-4">
-                      {updatedNavigation.map((item) => (
-                        <a
-                          key={item.name}
-                          href={item.href}
-                          className={classNames(
-                            item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                            'px-3 py-2 rounded-md text-sm font-medium'
-                          )}
-                          aria-current={item.current ? 'page' : undefined}
-                        >
-                          {item.name}
-                        </a>
-                      ))}
+                      {navigation.map((item) => {
+                        // Active if pathname matches, or if home ("/") and Pomodoro
+                        const isActive = location.pathname === item.path || (item.path === '/pomodoro' && location.pathname === '/');
+                        return (
+                          <Link
+                            key={item.name}
+                            to={item.path}
+                            className={classNames(
+                              isActive ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                              'px-3 py-2 rounded-md text-sm font-medium'
+                            )}
+                            aria-current={isActive ? 'page' : undefined}
+                          >
+                            {item.name}
+                          </Link>
+                        );
+                      })}
                     </div>
                   </div>
                 </div>
@@ -69,33 +70,36 @@ function AppWithRouter() {
 
             <Disclosure.Panel className="sm:hidden">
               <div className="space-y-1 px-2 pt-2 pb-3">
-                {updatedNavigation.map((item) => (
-                  <Disclosure.Button
-                    key={item.name}
-                    as="a"
-                    href={item.href}
-                    className={classNames(
-                      item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                      'block px-3 py-2 rounded-md text-base font-medium'
-                    )}
-                    aria-current={item.current ? 'page' : undefined}
-                  >
-                    {item.name}
-                  </Disclosure.Button>
-                ))}
+                {navigation.map((item) => {
+                  const isActive = location.pathname === item.path || (item.path === '/pomodoro' && location.pathname === '/');
+                  return (
+                    <Disclosure.Button
+                      key={item.name}
+                      as={Link}
+                      to={item.path}
+                      className={classNames(
+                        isActive ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                        'block px-3 py-2 rounded-md text-base font-medium'
+                      )}
+                      aria-current={isActive ? 'page' : undefined}
+                    >
+                      {item.name}
+                    </Disclosure.Button>
+                  );
+                })}
               </div>
             </Disclosure.Panel>
           </>
         )}
       </Disclosure>
-  <Routes>
-    <Route exact path="/" element={<Pomodoro/>}/>
-    <Route exact path="/pomodoro" element={<Pomodoro/>}/>
-    <Route exact path="/calculator" element={<Calculator/>}/>
-    <Route exact path="/age" element={<AgeCalculator/>}/>
+      <Routes>
+        <Route exact path="/" element={<Pomodoro/>}/>
+        <Route exact path="/pomodoro" element={<Pomodoro/>}/>
+        <Route exact path="/calculator" element={<Calculator/>}/>
+        <Route exact path="/age" element={<AgeCalculator/>}/>
         <Route exact path="/unitconverter" element={<UnitConverter/>}/>
-    <Route exact path="/todo" element={<TodoApp/>}/>
-  </Routes>
+        <Route exact path="/todo" element={<TodoApp/>}/>
+      </Routes>
     </>
-  )
+  );
 }

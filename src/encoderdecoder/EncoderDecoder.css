@@ -1,0 +1,71 @@
+.ed-card {
+  max-width: 500px;
+  margin: 2.5rem auto;
+  padding: 2.2rem 2rem 2rem 2rem;
+  background: #f8fafc;
+  border-radius: 14px;
+  box-shadow: 0 4px 24px rgba(37,99,235,0.08);
+  border: 1px solid #e0e7ef;
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+}
+.ed-title {
+  color: #2563eb;
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 0.7rem;
+  text-align: center;
+}
+.ed-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 0.2rem;
+}
+.ed-label {
+  font-size: 1rem;
+  color: #334155;
+  font-weight: 500;
+}
+.ed-select {
+  padding: 0.4rem 1rem;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  font-size: 1rem;
+  background: #fff;
+  color: #1e293b;
+  margin-left: 0.3rem;
+}
+.ed-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.ed-input, .ed-output {
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  padding: 0.7rem;
+  font-size: 1rem;
+  background: #fff;
+  color: #1e293b;
+  resize: vertical;
+  min-height: 3.5rem;
+}
+.ed-btn {
+  background: #2563eb;
+  color: #fff;
+  padding: 0.7rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin: 0.7rem 0 0.2rem 0;
+  font-size: 1.08rem;
+  align-self: flex-end;
+}
+.ed-btn:hover {
+  background: #1d4ed8;
+}

@@ -8,6 +8,7 @@ import AgeCalculator from './age/Age';
 import UnitConverter from './unitconvertor/UnitConverter';
 import TodoApp from './todo/TodoApp';
 import ICSViewer from './icsviewer/ICSViewer';
+import EncoderDecoder from './encoderdecoder/EncoderDecoder';
 
 const BASENAME = '/productivity';
 const navigation = [
@@ -17,6 +18,7 @@ const navigation = [
   { name: 'Unit Converter', path: '/unitconverter' },
   { name: 'Todo', path: '/todo' },
   { name: 'ICS Viewer', path: '/icsviewer' },
+  { name: 'Encoder/Decoder', path: '/encoderdecoder' },
 ];
 
 function classNames(...classes) {
@@ -102,6 +104,7 @@ function AppWithRouter() {
         <Route exact path="/unitconverter" element={<UnitConverter/>}/>
         <Route exact path="/todo" element={<TodoApp/>}/>
         <Route exact path="/icsviewer" element={<ICSViewer/>}/>
+        <Route exact path="/encoderdecoder" element={<EncoderDecoder/>}/>
       </Routes>
     </>
   );
